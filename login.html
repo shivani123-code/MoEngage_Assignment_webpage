@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login</title>
+    <style>
+        /* Style for the container box */
+        body{
+            background-color: grey;
+        }
+        .container {
+            
+            width: 50%;
+            margin: 0 auto;
+            border: 2px solid #ccc;
+            padding: 20px;
+            border-radius: 10px;
+            background-color: brown;
+            margin-top: 60px; /* Added margin-top for spacing */
+        }
+           
+
+        /* Style for the form labels and inputs */
+        label, input {
+            display: block;
+            margin-bottom: 10px;
+        }
+
+        /* Style for the submit button */
+        input[type="submit"] {
+            background-color: blue;
+            color: white;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 16px;
+        }
+
+        /* Style for error message */
+        .error-message {
+            color: red;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Login</h1>
+        <form action ="final.html" id="ratingForm">
+            <label for="breweryId">Email-ID:</label>
+            <input type="text" id="breweryId" placeholder="Enter your Email" required><br><br>
+            <label for="breweryId">Password</label>
+            <input type="password" id="breweryId" placeholder="Password" required><br><br> 
+            <input type="submit" value="Login">
+        </form>
+        <p class="error-message"></p>
+        <a href="forgot_password.html">Forgot Password?</a>
+        
+    </div>
+</body>
+</html>

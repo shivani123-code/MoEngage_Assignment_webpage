@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Brewery Page</title>
+    <style>
+        /* Add your styles here */
+        body{
+            background-color: grey;
+        }
+        .container {
+            width: 50%;
+            margin: 0 auto;
+            border: 2px solid #ccc;
+            padding: 20px;
+            border-radius: 10px;
+            background-color: brown;
+            margin-top: 60px; /* Added margin-top for spacing */
+        }
+        .form button{
+            color:blue;
+        }
+            
+
+        .reviews {
+            margin-top: 20px;
+        }
+
+        .review-form {
+            margin-top: 20px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h2>Existing Reviews & Descriptions</h2>
+        <div class="reviews" id="reviewsContainer">
+            <!-- Reviews will be dynamically added here -->
+        </div>
+
+        <h2>Add New Review & Descriptions</h2>
+        <form class="review-form" id="reviewForm">
+            <label for="userRating">Your Rating:</label>
+            <br>
+            <input type="number" id="userRating" min="1" max="5" placeholder="Enter Rating (1-5)" required>
+<br><br>
+            <label for="userReview">Your Review:</label>
+            <br>
+            <textarea id="userReview" rows="3" placeholder="Enter Review" required></textarea>
+<br><br>
+            <input type="submit" value="Submit Review">
+        </form>
+        <br><br>
+        <form action="brewery.html">
+        <button>All Brewery Existing Details</button>
+        </form>
+    </div>
+
+    <script>
+        // Function to fetch existing reviews from the database
+        function fetchReviews() {
+            // Replace with your logic to fetch reviews from the backend or another API
+            const fakeReviews = [
+                { rating: 4, review: "Good Work Culture!" },
+                { rating: 5, review: "Recommendable!" }
+            ];
+
+            return fakeReviews;
+        }
+
+        // Function to display existing reviews
+        function displayReviews() {
+            const reviewsContainer = document.getElementById('reviewsContainer');
+            const reviews = fetchReviews();
+
+            reviews.forEach(review => {
+                const reviewDiv = document.createElement('div');
+                reviewDiv.innerHTML = `
+                    <p>Rating: ${review.rating}</p>
+                    <p>${review.review}</p>
+                    <hr>
+                `;
+                reviewsContainer.appendChild(reviewDiv);
+            });
+        }
+
+        // Fetch and display existing reviews on page load
+        window.onload = function () {
+            displayReviews();
+        };
+
+        // Handle form submission to add a new review
+        document.getElementById('reviewForm').addEventListener('submit', function (event) {
+            event.preventDefault();
+
+            const userRating = document.getElementById('userRating').value;
+            const userReview = document.getElementById('userReview').value;
+
+            // Validate input
+            if (!userRating || isNaN(userRating) || userRating < 1 || userRating > 5 || !userReview) {
+                alert('Invalid input. Please enter a valid Rating (1-5) and Review.');
+                return;
+            }
+
+            // Replace with your logic to add a new review to the backend or another API
+            // For demonstration purposes, we'll just update the displayed reviews
+            const reviewsContainer = document.getElementById('reviewsContainer');
+            const newReviewDiv = document.createElement('div');
+            newReviewDiv.innerHTML = `
+                <p>Rating: ${userRating}</p>
+                <p>${userReview}</p>
+                <hr>
+            `;
+            reviewsContainer.appendChild(newReviewDiv);
+
+            // Optionally, you can clear the form fields after submission
+            document.getElementById('userRating').value = '';
+            document.getElementById('userReview').value = '';
+        });
+    </script>
+</body>
+</html>

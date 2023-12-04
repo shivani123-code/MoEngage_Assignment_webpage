@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Brewery List</title>
+    <style>
+        /* Add your styles here */
+        body{
+            background-color: gray;
+        }
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 20px;
+            color: black;
+        }
+
+        th, td {
+            border: 1px solid #ddd;
+            padding: 8px;
+            text-align: left;
+        }
+
+        th {
+            background-color: #f2f2f2;
+        }
+    </style>
+</head>
+<body>
+    <h1>Brewery List with Ratings</h1>
+
+    <table id="breweryTable">
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Name</th>
+                <th>Brewery_Type</th>
+                <th>Country</th>
+                <th>State</th>
+                <th>City</th>
+                <th>Street</th>
+                <th>Postal_Code</th>
+                <th>Phone</th>
+                <th>Website_Url</th>
+                <th>Longtitute</th>
+                <th>Lattitute</th>
+                <th>Rating</th>
+                 <!-- New column for Rating -->
+            </tr>
+        </thead>
+        <tbody>
+            <!-- Brewery data will be dynamically added here -->
+        </tbody>
+    </table>
+
+    <script>
+        // Fetch data from the Open Brewery DB API
+        fetch('https://api.openbrewerydb.org/breweries')
+            .then(response => response.json())
+            .then(data => displayBreweries(data))
+            .catch(error => console.error('Error fetching breweries:', error));
+
+        // Function to display brewery information
+        function displayBreweries(breweries) {
+            const breweryTable = document.getElementById('breweryTable');
+            const tbody = breweryTable.querySelector('tbody');
+
+            breweries.forEach(brewery => {
+                const row = document.createElement('tr');
+                row.innerHTML = `
+                    <td>${brewery.id}</td>
+                    <td>${brewery.name}</td>
+                    <td>${brewery.brewery_type}</td>
+                    <td>${brewery.country}</td>
+                    <td>${brewery.state}</td>
+                    <td>${brewery.city}</td>
+                    <td>${brewery.street}</td>
+                    <td>${brewery.postal_code}</td>
+                    <td>${brewery.phone}</td>
+                    <td>${brewery.website_url}</td>
+                    <td>${brewery.longitude}</td>
+                    <td>${brewery.latitude}</td>
+
+                    <td class="rating"></td> <!-- Empty cell for Rating -->
+                `;
+                tbody.appendChild(row);
+
+                // Fetch and populate the rating for each brewery
+                fetchRating(brewery.id, row);
+            });
+        }
+
+        // Function to fetch and display the rating for a brewery
+        function fetchRating(breweryId, row) {
+            // Replace with your logic to fetch ratings from your backend or another API
+            const fakeRating = Math.floor(Math.random() * 5) + 1; // Simulating a random rating
+            const ratingCell = row.querySelector('.rating');
+            ratingCell.textContent = fakeRating; // Update the cell content with the rating
+        }
+    </script>
+</body>
+</html>

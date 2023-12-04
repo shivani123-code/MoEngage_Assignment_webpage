@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Breweries Review System</title>
+    <style>
+        body {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+            background-color: rgb(30,30,30, 0.411); /* Light grey background color */
+            font-family: Arial, sans-serif;
+        }
+        body img{
+            width: 50%;
+            height: 50%;
+            padding: auto;
+            display: flex;
+        }
+
+        .content {
+            margin-top: 50px;
+            text-align: center;
+            max-width: 800px;
+            padding: 20px;
+            background-color: #0e0d0d;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+
+        h1 {
+            margin-bottom: 20px;
+            color: black;
+        }
+
+        .buttons-container {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            margin-top: 20px;
+        }
+
+        .buttons-container form {
+            margin: 0 10px;
+            font-size: 1.5em;
+            padding: 20px 30px;
+            background-color:rgb(100,500,500);
+            color: #fff;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
+        .buttons-container form:hover {
+            background-color: #0056b3;
+        }
+
+        input[type="submit"] {
+            cursor: pointer;
+        }
+
+        .button-group {
+            display: flex;
+            gap: 30px;
+        }
+
+        .button-group form {
+            margin: 0;
+        }
+    </style>
+</head>
+<body>
+    <img src="back1.jpg">
+    <h3>Search among existing user or Add new ratings
+    </h3>
+    
+    <div class="buttons-container">
+        <div class="button-group">
+            <form action="search.html" method="get">
+                <input type="submit" value="Search Existing">
+            </form>
+
+            <form action="add.html" method="get">
+                <input type="submit" value="Add New Rating ">
+            </form>
+        </div>
+    </div>
+</body>
+</html>
